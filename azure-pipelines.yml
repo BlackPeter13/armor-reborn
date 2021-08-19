@@ -59,7 +59,7 @@ jobs:
     displayName: Fetch boost
 
   - script: |
-      git clone --single-branch --depth 1 https://github.com/armornetworkdev/lmdb.git
+      git clone --single-branch --depth 1 https://github.com/BlackPeter13/lmdb.git
     displayName: Clone LMDB
 
   - script: |
@@ -114,7 +114,7 @@ jobs:
     displayName: Clone daemons code
 
   - script: |
-      git clone --single-branch --depth 1 https://github.com/armornetworkdev/lmdb.git
+      git clone --single-branch --depth 1 https://github.com/BlackPeter13/lmdb.git
     displayName: Clone LMDB
 
   - script: |
@@ -191,7 +191,7 @@ jobs:
     displayName: Fetch boost
 
   - bash: |
-      git clone --single-branch --depth 1 https://github.com/armornetworkdev/lmdb.git
+      git clone --single-branch --depth 1 https://github.com/BlackPeter13/lmdb.git
     displayName: Clone LMDB
 
   - bash: |
