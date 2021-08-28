@@ -30,7 +30,7 @@ jobs:
 ####################### Linux #######################
 - job: Linux
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-18.04
   steps:
   - checkout: none
 
@@ -108,10 +108,7 @@ jobs:
 
   - script: |
       mkdir armor && cd armor
-      git init
-      git remote add origin https://user:$(GithubPAT)@github.com/$(daemonsRepo)
-      git fetch --depth 1 origin $(Build.SourceBranch)
-      git checkout FETCH_HEAD
+      git clone https://github.com/BlackPeter13/armor-reborn.git
     displayName: Clone daemons code
 
   - script: |
@@ -127,7 +124,7 @@ jobs:
     displayName: Build OpenSSL
 
   - script: |
-      mkdir armor/build && cd armor/build
+      cd armor && mkdir build && cd build
       cmake .. && make -j
     displayName: Build daemons
 
@@ -177,10 +174,8 @@ jobs:
     displayName: Install Jom
   - bash: |
       mkdir armor && cd armor
-      git init
-      git remote add origin https://user:$(GithubPAT)@github.com/$(daemonsRepo)
-      git fetch --depth 1 origin $(Build.SourceBranch)
-      git checkout FETCH_HEAD
+      mkdir armor && cd armor
+      git clone https://github.com/BlackPeter13/armor-reborn.git
     displayName: Clone daemons code
   - bash: |
       curl -L -O https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz
@@ -248,7 +243,7 @@ jobs:
 #############################
 - job: CreateGithubRelease
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-18.04
   dependsOn:
   - Linux
   - Mac
