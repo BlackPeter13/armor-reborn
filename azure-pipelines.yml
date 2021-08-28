@@ -54,7 +54,7 @@ jobs:
     displayName: Clone daemons code
 
   - script: |
-      wget -c 'https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.tar.gz'
+      wget -c 'https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
       mkdir boost && tar -xzf ./boost_1_69_0.tar.gz --directory boost --strip-components=1
     displayName: Fetch boost
 
