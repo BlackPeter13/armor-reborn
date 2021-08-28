@@ -102,8 +102,9 @@ jobs:
   - checkout: none
 
   - script: |
-      brew install boost
-    displayName: Install boost from Homebrew
+      wget -c 'https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz'
+      mkdir boost && tar -xzf ./boost_1_69_0.tar.gz --directory boost --strip-components=1
+    displayName: Install boost
 
   - script: |
       mkdir armor && cd armor
@@ -170,12 +171,10 @@ jobs:
       curl -O https://strawberryperl.com/download/5.28.2.1/strawberry-perl-5.28.2.1-64bit-portable.zip
       7z x strawberry-perl-5.28.2.1-64bit-portable.zip -ostrawberry-perl
     displayName: Install ActivePerl (required to build OpenSSL)
-
   - bash: |
       curl -L -O http://download.qt.io/official_releases/jom/jom.zip
       7z x jom.zip -ojom
     displayName: Install Jom
-
   - bash: |
       mkdir armor && cd armor
       git init
@@ -183,15 +182,13 @@ jobs:
       git fetch --depth 1 origin $(Build.SourceBranch)
       git checkout FETCH_HEAD
     displayName: Clone daemons code
-
   - bash: |
-      curl -L -O https://dl.bintray.com/boostorg/release/1.69.0/source/boost_1_69_0.zip
-      7z x boost_1_69_0.zip
+      curl -L -O https://boostorg.jfrog.io/artifactory/main/release/1.69.0/source/boost_1_69_0.tar.gz
+      7z x -tgzip -so boost_1_69_0.tar.gz | 7z x -si -ttar
       mv boost_1_69_0 boost
     displayName: Fetch boost
-
   - bash: |
-      git clone --single-branch --depth 1 https://github.com/BlackPeter13/lmdb.git
+      git clone --single-branch --depth 1 https://github.com/Armor-Network/lmdb.git
     displayName: Clone LMDB
 
   - bash: |
