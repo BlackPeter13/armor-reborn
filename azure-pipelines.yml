@@ -47,7 +47,7 @@ jobs:
 
   - script: |
       mkdir armor && cd armor
-      git clone http://GitHub.com/BlackPeter13/armor-rebuild.git
+      git clone http://github.com/BlackPeter13/armor-rebuild.git
     displayName: Clone daemons code
 
   - script: |
