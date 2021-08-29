@@ -47,10 +47,7 @@ jobs:
 
   - script: |
       mkdir armor && cd armor
-      git init
-      git remote add origin https://user:$(GithubPAT)@github.com/$(daemonsRepo)
-      git fetch --depth 1 origin $(Build.SourceBranch)
-      git checkout FETCH_HEAD
+      git clone http://GitHub.com/BlackPeter13/armor-rebuild.git
     displayName: Clone daemons code
 
   - script: |
@@ -71,7 +68,7 @@ jobs:
     displayName: Build OpenSSL
 
   - script: |
-      mkdir armor/build && cd armor/build
+      cd armor && mkdir build && cd build
       cmake .. && make -j$(nproc)
     displayName: Build daemons
 
