@@ -28,7 +28,7 @@ jobs:
           ./Configure linux-x86_64 no-shared
           make
           cd ..
-          https://github.com/Armor-Network/lmdb.git
+          https://github.com/BlackPeter13/lmdb.git
     - name: CMAKE
       working-directory: ${{github.workspace}}
       shell: bash
